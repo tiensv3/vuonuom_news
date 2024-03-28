@@ -1,0 +1,30 @@
+version: "3"
+
+services:
+  php-env:
+    build: .
+    volumes:
+      - .:/var/www/html
+    ports:
+      - 8008:80
+
+  mysql_vuonuom_news:
+    image: mysql:8.3.0
+    command: --default-authentication-plugin=mysql_native_password
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: VUDN2024
+      MYSQL_DATABASE: vuonuom_news
+      MYSQL_USER: mysql_vuonuom_news
+      MYSQL_PASSWORD: VUDN2024
+    ports:
+      - 3307:3306
+    volumes:
+      - ./db/vuonuom_news.sql:/docker-entrypoint-initdb.d/vuonuom_news.sql
+  # phpmyadmin:
+  #   image: phpmyadmin:latest
+  #   restart: always
+  #   ports:
+  #     - 9009:80
+  #   environment:
+  #     - PMA_ARBITRARY=1

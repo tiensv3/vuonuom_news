@@ -1,0 +1,57 @@
+RewriteEngine On
+
+ErrorDocument 401 /404.html
+ErrorDocument 403 /404.html
+ErrorDocument 404 /404.html
+ErrorDocument 500 /404.html
+
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+Options All -Indexes
+ServerSignature Off
+Options +FollowSymLinks
+AddDefaultCharset UTF-8
+
+RewriteRule "trang-chu" "index.php"
+RewriteRule "lich-su-hinh-thanh" "history.php"
+RewriteRule "hoi-dong-co-van-chien-luoc-tra-vinh" "hoidongcovan.php"
+RewriteRule "so-do-to-chuc" "strategicdiagram.php"
+RewriteRule "ve-chung-toi" "aboutUS.php"
+RewriteRule "hoi-dong-co-van-khoi-nghiep-tra-vinh" "hoidongkhoinghiep.php"
+RewriteRule "^danh-muc-([a-zA-Z0-9])$" "ListCate.php?action=danhmuc&id=$1"
+RewriteRule "dich-vu-co-ban" "basicservice.php"
+RewriteRule "content-marketing" "contentmarketingservice.php"
+RewriteRule "dich-vu-thiet-ke" "designservice.php"
+RewriteRule "dich-vu-cham-soc-fanpage" "fanpageservice.php"
+RewriteRule ^tim-kiem/([^/]+)/?$ search.php?keyword=$1 [L]
+RewriteRule "lien-he" "contact.php"
+RewriteRule ^tin-tuc/([^/]+)/?$ DetailNews.php?action=chitiet&slug=$1 [L]
+RewriteRule ^su-kien/([^/]+)/?$ DetailEvent.php?action=chitiet&slug=$1 [L]
+RewriteRule ^tin-tuc$ ListAll.php?action=news [L]
+RewriteRule ^su-kien$ ListAll.php?action=events [L]
+RewriteRule "dang-nhap" "login.php"
+RewriteRule "login" "login.php"
+RewriteRule "toi-da-quen-mat-khau" "rePassword.php"
+
+
+
+
+# #Trang index
+# RewriteCond %{THE_REQUEST} \s/index\.php [NC]
+# RewriteRule ^ /trang-chu [R=301,L]
+# RewriteRule ^trang-chu$ /index.php [L]
+# #Trang sodotochuc
+# RewriteCond %{THE_REQUEST} \s/strategicdiagram\.php [NC]
+# RewriteRule ^ /so-do-to-chuc [R=301,L]
+# RewriteRule ^so-do-to-chuc$ /strategicdiagram.php [L]
+# #Trang lichsu
+# RewriteCond %{THE_REQUEST} \s/history\.php [NC]
+# RewriteRule ^ /lich-su-hinh-thanh [R=301,L]
+# RewriteRule ^lich-su-hinh-thanh$ /history.php [L]
+# #Trang hoidongcovanchienluoc
+# RewriteCond %{THE_REQUEST} \s/hoidongcovan\.php [NC]
+# RewriteRule ^ /hoi-dong-co-van-chien-luoc [R=301,L]
+# RewriteRule ^hoi-dong-co-van-chien-luoc$ /hoidongcovan.php [L]
+# #Trang danh muc
+# RewriteRule "^danh-muc-([a-zA-Z0-9])$" "ListCate.php?action=danhmuc&id=$1"
+
